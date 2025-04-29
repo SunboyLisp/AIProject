@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 //@Component
 public class SpringAiInvoke implements CommandLineRunner {
 
-    @Resource
+    //@Resource
     private ChatModel dashscopeChatModel;
 
     @Override
