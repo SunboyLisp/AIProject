@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 //@Component
 public class OllamaAInvoke implements CommandLineRunner {
 
-    @Resource
+    //@Resource
     private ChatModel ollamaChatModel;
 
     @Override
