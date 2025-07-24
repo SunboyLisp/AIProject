@@ -50,12 +50,14 @@ public List<Document> loadMarkdowns() {
         for (Resource resource : resources) {
             // 获取当前文件的文件名
             String fileName = resource.getFilename();
-            // 配置 Markdown 解析器，定制解析规则
+            // 提取文档倒数第 3 和第 2 个字作为标签
+            String status = fileName.substring(fileName.length() - 6, fileName.length() - 4);
             MarkdownDocumentReaderConfig config = MarkdownDocumentReaderConfig.builder()
                     .withHorizontalRuleCreateDocument(true)
                     .withIncludeCodeBlock(false)
                     .withIncludeBlockquote(false)
                     .withAdditionalMetadata("filename", fileName)
+                    .withAdditionalMetadata("status", status)
                     .build();
             // 创建 MarkdownDocumentReader 对象，用于读取和解析 Markdown 文件
             MarkdownDocumentReader reader = new MarkdownDocumentReader(resource, config);

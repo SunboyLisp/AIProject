@@ -24,11 +24,15 @@ public class LoveAppVectorStoreConfig {
     @Resource
     private LoveAppDocumentLoader loveAppDocumentLoader;
 
+    @Resource
+    private MyTokenTextSplitter myTokenTextSplitter;
     /**
      *
      * @param dashscopeEmbeddingModel 提供文本到向量转换能力的 Embedding 模型
      * @return 构建完成并已加载文档数据的 VectorStore 实例
      */
+    @Resource
+    private MyKeywordEnricher myKeywordEnricher;
     @Bean
     VectorStore loveAppVectorStore(EmbeddingModel dashscopeEmbeddingModel) {
         // 使用 DashScope Embedding 模型构建 SimpleVectorStore 实例
@@ -38,10 +42,21 @@ public class LoveAppVectorStoreConfig {
         // 调用文档加载器方法，获取所有 Markdown 文件解析后的 Document 对象列表
         List<Document> documents = loveAppDocumentLoader.loadMarkdowns();
 
+        //自主切分
+        //List<Document> splitDocuments = myTokenTextSplitter.splitCustomized(documents);
+        // 自动补充关键词元信息
+        //List<Document> enrichedDocuments = myKeywordEnricher.enrichDocuments(documents);
+        // 自动补充关键词元信息
+        List<Document> enrichedDocuments = myKeywordEnricher.enrichDocuments(documents);
         // 将加载的文档添加到 VectorStore 中，建立向量索引以支持语义检索
-        simpleVectorStore.add(documents);
+        simpleVectorStore.add(enrichedDocuments);
 
         // 返回配置完成的 VectorStore 实例
         return simpleVectorStore;
     }
+
+
+
+
+
 }

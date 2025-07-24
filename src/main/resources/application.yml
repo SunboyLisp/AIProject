@@ -14,6 +14,15 @@ server:
       context-path: /api
 
 
+    #ai:
+    #  vectorstore:
+    #    pgvector:
+    #      index-type: HNSW
+    #      dimensions: 1536
+    #      distance-type: COSINE_DISTANCE
+    #      max-document-batch-size: 10000 # Optional: Maximum number of documents per batch
+
+
 # springdoc-openapi ??????
 springdoc:
   swagger-ui:
@@ -34,3 +43,5 @@ knife4j:
 logging:
   level:
     org. springframework. ai. chat. client. advisor. SimpleLoggerAdvisor:  DEBUG
+
+
