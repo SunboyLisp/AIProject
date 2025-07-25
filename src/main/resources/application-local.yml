@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: lisp-ai-agent
+  ai:
+    dashscope:
+      api-key: sk-d9c6bc9984234ea5942f6e94d5f811e2
+      chat:
+        options:
+          model: qwen-plus
+
+  #datasource:
+  #  url: jdbc:postgresql://rm-cn-lf649h3j5000xzao.rwlb.rds.aliyuncs.com:5432/lisp_ai
+  #  username: AiLearn
+  #  password: 123456LSP!
+search-api:
+  api-key: tMf2bVWVTbLyH5jTwhor1Dim
